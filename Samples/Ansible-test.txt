@@ -1,0 +1,17 @@
+#Ansimble task 
+
+ansible-playbook foo.yml --check
+
+tasks:
+  - name: This task will always make changes to the system
+    ansible.builtin.command: /something/to/run --even-in-check-mode
+    check_mode: no
+
+  - name: This task will never make changes to the system
+    ansible.builtin.lineinfile:
+      line: "important config"
+      dest: /path/to/myconfig.conf
+      state: present
+    check_mode: yes
+    register: changes_to_important_config
+	

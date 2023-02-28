@@ -1,0 +1,8 @@
+Please read and describe :
+
+select * from jobqueue
+where jobClassName = 'com.fortify.manager.BLL.jobs.LdapCacheRefreshJob'
+order by executionOrder desc
+
+
+(@P0 bigint,@P1 bigint,@P2 bigint)DELETE FROM sourcefilemap WHERE scan_id = @P0 AND NOT EXISTS ( SELECT 1 from issue i  WHERE i.projectVersion_id = @P1    AND i.lastScan_id = @P2    AND i.fileName =  sourcefilemap.filePath    AND i.shortFileName =  sourcefilemap.fileName )

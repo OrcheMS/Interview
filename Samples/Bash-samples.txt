@@ -1,0 +1,33 @@
+#Sample task bash
+
+##Please write bash function called 'task' which perform output to stdOut his parameter and wait 0.5 sec. 
+
+task(){
+   sleep 0.5; echo "$1";
+}
+
+#Sequential runs
+
+##Run 'task' function for each parameter from raw : a b c d e f g 
+
+for thing in a b c d e f g; do 
+   task "$thing"
+done
+
+#Parallel runs
+##Run 'task' function in parallel for each parameter from raw : a b c d e f g 
+
+for thing in a b c d e f g; do 
+  task "$thing" &
+done
+
+#Parallel runs in N-process batches
+
+
+N=4
+(
+for thing in a b c d e f g; do 
+   ((i=i%N)); ((i++==0)) && wait
+   task "$thing" & 
+done
+)

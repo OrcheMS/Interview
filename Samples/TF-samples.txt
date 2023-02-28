@@ -1,0 +1,6 @@
+#TF code sample 
+
+##Please write string of .tf file what describe: If var.a is an empty string then the result is "default-a", but otherwise it is the actual value of var.a.
+
+var.a != "" ? var.a : "default-a"
+
